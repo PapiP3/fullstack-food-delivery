@@ -1,3 +1,4 @@
+// Navigation bar for QuickEats site
 import React from "react";
 import "./Navbar.css";
 
