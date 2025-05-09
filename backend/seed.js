@@ -4,36 +4,29 @@ const Food = require("./models/Food");
 
 dotenv.config();
 
+const foods = [
+  {
+    name: "Classic Cheeseburger",
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
+    price: 8.99,
+  },
+  {
+    name: "Pepperoni Pizza",
+    image: "https://images.unsplash.com/photo-1601925260891-c3c9e3ed7b11",
+    price: 11.49,
+  },
+  {
+    name: "Chicken Tacos",
+    image: "https://images.unsplash.com/photo-1613145993481-3ed1e47c3e8a",
+    price: 9.25,
+  }
+];
+
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
+  .then(async () => {
     console.log("Connected to MongoDB for seeding.");
-    return Food.insertMany([
-      {
-        name: "Classic Cheeseburger",
-        image: "https://source.unsplash.com/400x300/?cheeseburger",
-        price: 8.99,
-      },
-      {
-        name: "Pepperoni Pizza",
-        image: "https://source.unsplash.com/400x300/?pepperoni-pizza",
-        price: 11.49,
-      },
-      {
-        name: "Chicken Tacos",
-        image: "https://source.unsplash.com/400x300/?tacos",
-        price: 9.25,
-      },
-      {
-        name: "Sushi Platter",
-        image: "https://source.unsplash.com/400x300/?sushi",
-        price: 13.75,
-      },
-      {
-        name: "Pad Thai",
-        image: "https://source.unsplash.com/400x300/?pad-thai",
-        price: 10.50,
-      },
-    ]);
+    await Food.deleteMany(); // ⬅️ Clear existing data
+    return Food.insertMany(foods);
   })
   .then(() => {
     console.log("🌮 Sample food data inserted!");

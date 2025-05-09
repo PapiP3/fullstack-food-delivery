@@ -1,51 +1,22 @@
-// Gallery component showing static food items
-
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { fetchFoods } from "../util/api";
 import FoodCard from "./FoodCard";
+import "./FoodGallery.css";
 
-const foodItems = [
-    {
-      title: "Burger Deluxe",
-      image: "https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_640.jpg",
-      price: 9.99,
-    },
-    {
-      title: "Veggie Pizza",
-      image: "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_640.jpg",
-      price: 11.49,
-    },
-  {
-    title: "Chicken Wrap",
-    image: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=400&q=80",
-    price: 8.79,
-  },
-];
+export default function FoodGallery() {
+  const [foods, setFoods] = useState([]);
 
-function FoodGallery() {
-    return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "24px",
-          marginTop: "20px",
-          padding: "0 20px",
-          maxWidth: "1200px",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        {foodItems.map((item, idx) => (
-          <FoodCard
-            key={idx}
-            title={item.title}
-            image={item.image}
-            price={item.price}
-          />
-        ))}
-      </div>
-    );
-  }
-  
+  useEffect(() => {
+    fetchFoods()
+      .then((data) => setFoods(data))
+      .catch((error) => console.error("Error fetching foods:", error));
+  }, []);
 
-export default FoodGallery;
+  return (
+    <div className="gallery-container">
+      {foods.map((food) => (
+        <FoodCard key={food._id} food={food} />
+      ))}
+    </div>
+  );
+}

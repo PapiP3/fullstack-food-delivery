@@ -1,12 +1,12 @@
 import React from "react";
-import "./FoodCard.css";
+import "./FoodGallery.css"; // Use this since styles are here
 
-function FoodCard({ title, image, price }) {
+function FoodCard({ food }) {
   return (
     <div className="food-card">
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>${price.toFixed(2)}</p>
+      <img src={food.image} alt={food.name} />
+      <h3>{food.name}</h3>
+      <p>${food.price.toFixed(2)}</p>
     </div>
   );
 }
