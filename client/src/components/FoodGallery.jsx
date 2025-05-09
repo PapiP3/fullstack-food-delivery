@@ -1,3 +1,5 @@
+// Gallery component showing static food items
+
 import React from "react";
 import FoodCard from "./FoodCard";
 
