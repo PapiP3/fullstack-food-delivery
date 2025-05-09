@@ -6,6 +6,7 @@ import Menu from "./pages/Menu";
 function App() {
   return (
     <Router>
+      // Route setup for home and menu pages
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
