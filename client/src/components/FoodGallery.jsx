@@ -22,25 +22,30 @@ const foodItems = [
 ];
 
 function FoodGallery() {
-  return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-        gap: "20px",
-        marginTop: "20px",
-      }}
-    >
-      {foodItems.map((item, idx) => (
-        <FoodCard
-          key={idx}
-          title={item.title}
-          image={item.image}
-          price={item.price}
-        />
-      ))}
-    </div>
-  );
-}
+    return (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "24px",
+          marginTop: "20px",
+          padding: "0 20px",
+          maxWidth: "1200px",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        {foodItems.map((item, idx) => (
+          <FoodCard
+            key={idx}
+            title={item.title}
+            image={item.image}
+            price={item.price}
+          />
+        ))}
+      </div>
+    );
+  }
+  
 
 export default FoodGallery;

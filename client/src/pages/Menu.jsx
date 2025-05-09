@@ -6,7 +6,13 @@ function Menu() {
   return (
     <>
       <Navbar />
-      <main style={{ padding: "20px" }}>
+      <main
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "20px",
+        }}
+      >
         <h1>Menu</h1>
         <FoodGallery />
       </main>
