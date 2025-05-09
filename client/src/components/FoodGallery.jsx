@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchFoods } from "../util/api";
+import { fetchFoods } from "../services/api";
 import FoodCard from "./FoodCard";
 import "./FoodGallery.css";
 
